@@ -1,6 +1,6 @@
 [project]
 name = "trie-index-utils"
-version = "0.1.0"
+version = "0.1.1"
 description = "Trie-based data structure providing exact word lookup and prefix autocomplete search."
 requires-python = ">=3.10"
 dependencies = []
