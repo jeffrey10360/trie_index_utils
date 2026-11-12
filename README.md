@@ -23,3 +23,10 @@ Autocomplete over a known, fixed word list is a common need, and a trie prunes t
 - **Empty string is a valid word** if you put it in the vocabulary. `contains("")` reflects that. An empty prefix to `search` returns every word.
 - **Duplicates are preserved** in `search` results (insertion order is the source of truth), but `len()` counts unique words. Dedup your input if you don't want duplicates surfacing in suggestions.
 - **Non-string vocabulary entries raise `TypeError`** at construction. We don't coerce; coercion hides bugs in the caller's data.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
